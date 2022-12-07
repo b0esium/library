@@ -1,7 +1,24 @@
-table {
-    border-style: solid;
+.content {
+    margin-top: 30px;
 }
 
 tbody th {
     font-weight: normal;
+    vertical-align: middle;
+}
+
+#addBookForm {
+    margin-top: 60px;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+label {
+    font-weight: bold;
+}
+
+.btn-newBook {
+    margin-top: 10px;
 }

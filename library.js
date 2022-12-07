@@ -48,6 +48,7 @@ function displayBooks() {
     let deleteBookCell = document.createElement("th");
     let deleteBookBtn = document.createElement("button");
     deleteBookBtn.setAttribute("data-index", `${myLibrary.indexOf(book)}`);
+    deleteBookBtn.setAttribute("class", "btn btn-warning");
     deleteBookBtn.innerText = "Remove";
     deleteBookBtn.addEventListener("click", function () {
       removeBook(deleteBookBtn.dataset.index);
@@ -60,6 +61,7 @@ function displayBooks() {
     let toggleReadCell = document.createElement("th");
     let toggleReadBtn = document.createElement("button");
     toggleReadBtn.setAttribute("data-index", `${myLibrary.indexOf(book)}`);
+    toggleReadBtn.setAttribute("class", "btn btn-secondary");
     toggleReadBtn.innerText = "Toggle Read";
     toggleReadBtn.addEventListener("click", function () {
       myLibrary[toggleReadBtn.dataset.index].toggleRead();
