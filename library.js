@@ -5,12 +5,8 @@ class Book {
     this.pages = pages;
     this.read = read;
   }
-  info() {
-    console.log(
-      `${this.title} by ${this.author}, ${this.pages} pages, ${
-        this.read ? "read" : "not read yet"
-      }`
-    );
+  toggleRead() {
+    this.read = !this.read;
   }
 }
 
@@ -48,9 +44,10 @@ function displayBooks() {
     newRead.innerText = book.read;
     newBook.append(newRead);
 
+    // remove book button
     let deleteBookCell = document.createElement("th");
     let deleteBookBtn = document.createElement("button");
-    deleteBookBtn.setAttribute = `data-index: ${myLibrary.indexOf(book)}`;
+    deleteBookBtn.setAttribute("data-index", `${myLibrary.indexOf(book)}`);
     deleteBookBtn.innerText = "Remove";
     deleteBookBtn.addEventListener("click", function () {
       removeBook(deleteBookBtn.dataset.index);
@@ -58,6 +55,18 @@ function displayBooks() {
     });
     newBook.append(deleteBookCell);
     deleteBookCell.appendChild(deleteBookBtn);
+
+    // toggle read state button
+    let toggleReadCell = document.createElement("th");
+    let toggleReadBtn = document.createElement("button");
+    toggleReadBtn.setAttribute("data-index", `${myLibrary.indexOf(book)}`);
+    toggleReadBtn.innerText = "Toggle Read";
+    toggleReadBtn.addEventListener("click", function () {
+      myLibrary[toggleReadBtn.dataset.index].toggleRead();
+      displayBooks();
+    });
+    newBook.append(toggleReadCell);
+    toggleReadCell.appendChild(toggleReadBtn);
   }
 }
 
@@ -65,6 +74,7 @@ function removeBook(index) {
   myLibrary.splice(index, 1);
 }
 
+// remove all DOM elements from display
 function emptyLibrary() {
   while (library.firstChild) {
     library.removeChild(library.firstChild);
