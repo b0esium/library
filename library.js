@@ -47,7 +47,22 @@ function displayBooks() {
     let newRead = document.createElement("th");
     newRead.innerText = book.read;
     newBook.append(newRead);
+
+    let deleteBookCell = document.createElement("th");
+    let deleteBookBtn = document.createElement("button");
+    deleteBookBtn.setAttribute = `data-index: ${myLibrary.indexOf(book)}`;
+    deleteBookBtn.innerText = "Remove";
+    deleteBookBtn.addEventListener("click", function () {
+      removeBook(deleteBookBtn.dataset.index);
+      displayBooks();
+    });
+    newBook.append(deleteBookCell);
+    deleteBookCell.appendChild(deleteBookBtn);
   }
+}
+
+function removeBook(index) {
+  myLibrary.splice(index, 1);
 }
 
 function emptyLibrary() {
